@@ -1,36 +1,23 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# error314
 
-## Getting Started
+**error314** is a summer hack club for high school founders (ages 16–20) based in St. Louis, MO.
 
-First, run the development server:
+## what it is
+A place to show up, meet people, and build things that actually matter.  
+No curriculum. No lectures. Just a room full of ambitious teenagers making stuff together.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## the name
+`314` = St. Louis area code.  
+`error` = HTTP error codes (you know, 404, 500...).  
+Together = a club that embraces breaking things on the way to building them.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## who it's for
+- High schoolers in the St. Louis area (16–20)
+- Builders, founders, tinkerers, and dreamers
+- People who want to ship something real this summer
+- **Not** for aspiring Palantir engineers or anyone whose main goal is a LinkedIn badge
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## details
+- **When:** June – July 2025 (dates TBD)
+- **Where:** St. Louis, MO (location TBD)
+- **Spots:** Limited to 15 students

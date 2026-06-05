@@ -1,26 +1,263 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bsod-blue: #0000aa;
+  --bsod-blue-dark: #00007a;
+  --bsod-white: #ffffff;
+  --bsod-gray: #c0c0c0;
+  --bsod-gray-dim: #8a8aa8;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-bsod: var(--bsod-blue);
+  --color-bsod-dark: var(--bsod-blue-dark);
+  --color-bsod-white: var(--bsod-white);
+  --color-bsod-gray: var(--bsod-gray);
+  --color-bsod-dim: var(--bsod-gray-dim);
+  --font-mono: var(--font-mono), "Courier New", ui-monospace, monospace;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html,
+body {
+  background: var(--bsod-blue);
+  color: var(--bsod-white);
+  font-family: var(--font-mono), "Courier New", ui-monospace, monospace;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  /* CRT scanlines + subtle vignette */
+  background-image:
+    repeating-linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.18) 0px,
+      rgba(0, 0, 0, 0.18) 1px,
+      transparent 1px,
+      transparent 3px
+    ),
+    radial-gradient(
+      ellipse at center,
+      rgba(0, 0, 170, 0) 0%,
+      rgba(0, 0, 0, 0.45) 100%
+    );
+  background-attachment: fixed;
+}
+
+::selection {
+  background: var(--bsod-white);
+  color: var(--bsod-blue);
+}
+
+/* Blinking block cursor */
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+.cursor::after {
+  content: "█";
+  display: inline-block;
+  margin-left: 0.15em;
+  animation: blink 1s steps(1) infinite;
+}
+
+.cursor-inline {
+  display: inline-block;
+  width: 0.6em;
+  height: 1em;
+  background: var(--bsod-white);
+  vertical-align: -0.1em;
+  animation: blink 1s steps(1) infinite;
+}
+
+/* Glitch effect */
+@keyframes glitch-skew {
+  0%,
+  100% {
+    transform: skewX(0);
+  }
+  3% {
+    transform: skewX(-4deg);
+  }
+  6% {
+    transform: skewX(2deg);
+  }
+  9% {
+    transform: skewX(0);
+  }
+  91% {
+    transform: skewX(0);
+  }
+  93% {
+    transform: skewX(3deg);
+  }
+  95% {
+    transform: skewX(-2deg);
+  }
+  97% {
+    transform: skewX(0);
+  }
+}
+
+@keyframes glitch-clip-1 {
+  0%,
+  100% {
+    clip-path: inset(0 0 0 0);
+    transform: translate(0);
+  }
+  20% {
+    clip-path: inset(20% 0 60% 0);
+    transform: translate(-3px, 0);
+  }
+  40% {
+    clip-path: inset(50% 0 20% 0);
+    transform: translate(3px, 0);
+  }
+  60% {
+    clip-path: inset(10% 0 80% 0);
+    transform: translate(-2px, 0);
+  }
+  80% {
+    clip-path: inset(70% 0 5% 0);
+    transform: translate(2px, 0);
+  }
+}
+
+@keyframes glitch-clip-2 {
+  0%,
+  100% {
+    clip-path: inset(0 0 0 0);
+    transform: translate(0);
+  }
+  25% {
+    clip-path: inset(40% 0 30% 0);
+    transform: translate(3px, 0);
+  }
+  50% {
+    clip-path: inset(10% 0 70% 0);
+    transform: translate(-3px, 0);
+  }
+  75% {
+    clip-path: inset(60% 0 10% 0);
+    transform: translate(2px, 0);
+  }
+}
+
+.glitch {
+  position: relative;
+  display: inline-block;
+  animation: glitch-skew 6s infinite;
+}
+
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  pointer-events: none;
+}
+
+.glitch::before {
+  color: #00ffff;
+  animation: glitch-clip-1 4s infinite linear alternate-reverse;
+  mix-blend-mode: screen;
+}
+
+.glitch::after {
+  color: #ff00ff;
+  animation: glitch-clip-2 3.2s infinite linear alternate-reverse;
+  mix-blend-mode: screen;
+}
+
+/* Subtle periodic flicker for whole sections */
+@keyframes flicker {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  97% {
+    opacity: 1;
+  }
+  97.5% {
+    opacity: 0.6;
+  }
+  98% {
+    opacity: 1;
+  }
+  98.5% {
+    opacity: 0.4;
+  }
+  99% {
+    opacity: 1;
+  }
+}
+
+.flicker {
+  animation: flicker 7s infinite;
+}
+
+/* "Press ENTER" key style */
+.key-prompt {
+  display: inline-block;
+  border: 2px solid var(--bsod-white);
+  padding: 0.5rem 1.25rem;
+  background: var(--bsod-blue);
+  color: var(--bsod-white);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: background 0.05s, color 0.05s;
+  cursor: pointer;
+}
+
+.key-prompt:hover,
+.key-prompt:focus {
+  background: var(--bsod-white);
+  color: var(--bsod-blue);
+  outline: none;
+}
+
+.key-prompt:active {
+  transform: translateY(1px);
+}
+
+/* CLI-style input */
+.cli-input {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--bsod-white);
+  color: var(--bsod-white);
+  font-family: inherit;
+  font-size: inherit;
+  padding: 0.25rem 0;
+  width: 100%;
+  outline: none;
+  caret-color: var(--bsod-white);
+}
+
+.cli-input::placeholder {
+  color: var(--bsod-gray-dim);
+}
+
+.cli-input:focus {
+  border-bottom-color: var(--bsod-white);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+textarea.cli-input {
+  resize: vertical;
+  min-height: 4rem;
+}
+
+/* Top header bar (BSOD-style title strip) */
+.bsod-bar {
+  display: inline-block;
+  background: var(--bsod-gray);
+  color: var(--bsod-blue);
+  padding: 0.1rem 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
 }

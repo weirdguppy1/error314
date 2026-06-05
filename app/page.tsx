@@ -6,7 +6,7 @@ export default function Page() {
       {/* ============ HERO ============ */}
       <section className="pb-20 sm:pb-28">
         <div className="bsod-bar mb-8 text-xs sm:text-sm">
-          error314 — A FATAL EXCEPTION HAS OCCURRED
+          ERROR314 — A FATAL EXCEPTION HAS OCCURRED
         </div>
 
         <h1 className="text-xl sm:text-3xl md:text-6xl font-bold leading-tight mb-8 break-word">
@@ -24,7 +24,7 @@ export default function Page() {
             school and ambition.
           </p>
           <p className="text-bsod-gray">
-            error314 is a teen hack club in St. Louis, MO. summers only.
+            ERROR314 is a teen hack club in St. Louis, MO. summers only.
             <br />
             15 people, max.
           </p>
@@ -49,7 +49,7 @@ export default function Page() {
       {/* ============ ABOUT ============ */}
       <Section heading="ABOUT.txt" id="about">
         <p>
-          error314 is a place for{" "}
+          ERROR314 is a place for{" "}
           <span className="text-bsod-white">16–20 year-old teen founders</span>{" "}
           in St. Louis to meet up, hang out, code, and build real ventures
           together.
@@ -144,7 +144,7 @@ export default function Page() {
 
       {/* ============ FOOTER ============ */}
       <footer className="mt-24 pt-8 border-t border-white/30 text-bsod-dim text-xs sm:text-sm flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
-        <p>error314 &copy; 2025 — St. Louis, MO</p>
+        <p>ERROR314 &copy; 2025 — St. Louis, MO</p>
         <p className="text-bsod-gray">
           <span className="text-bsod-white">314</span>{" "}
           <span className="cursor-inline" />

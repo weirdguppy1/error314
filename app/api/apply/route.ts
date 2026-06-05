@@ -12,7 +12,7 @@ type ApplyPayload = {
 };
 
 const TO_ADDRESS = "mark.fang.stl@gmail.com";
-const FROM_ADDRESS = process.env.RESEND_FROM ?? "error314@markfang.dev";
+const FROM_ADDRESS = process.env.RESEND_FROM ?? "ERROR314@markfang.dev";
 
 function escapeHtml(s: string) {
   return s
@@ -88,7 +88,7 @@ export async function POST(request: NextRequest) {
   ];
 
   const adminText = fields.map(([k, v]) => `${k}: ${v}`).join("\n");
-  const adminHtml = `<h2>new error314 application</h2><table cellpadding="6" style="border-collapse:collapse;font-family:monospace">${fields
+  const adminHtml = `<h2>new ERROR314 application</h2><table cellpadding="6" style="border-collapse:collapse;font-family:monospace">${fields
     .map(
       ([k, v]) =>
         `<tr><td style="vertical-align:top;border:1px solid #ccc"><b>${escapeHtml(
@@ -104,19 +104,19 @@ we got your application, ${applicantName}.
 
 you'll hear back from us. don't refresh anything expecting more.
 
-— error314`;
+— ERROR314`;
   const applicantHtml = `<div style="font-family:monospace;color:#fff;background:#000;padding:24px">
   <p>&gt; transmission_received</p>
   <p>we got your application, <b>${escapeHtml(applicantName)}</b>.</p>
   <p>you&#39;ll hear back from us.</p>
-  <p>— error314</p>
+  <p>— ERROR314</p>
 </div>`;
 
   try {
     await sendEmail({
       apiKey,
       to: TO_ADDRESS,
-      subject: `error314 application — ${body.name || "unknown"}`,
+      subject: `ERROR314 application — ${body.name || "unknown"}`,
       text: adminText,
       html: adminHtml,
       replyTo: body.email || undefined,
@@ -134,7 +134,7 @@ you'll hear back from us. don't refresh anything expecting more.
       await sendEmail({
         apiKey,
         to: body.email,
-        subject: "error314 — transmission_received",
+        subject: "ERROR314 — transmission_received",
         text: applicantText,
         html: applicantHtml,
       });
